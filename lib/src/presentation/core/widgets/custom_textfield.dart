@@ -71,6 +71,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Padding(
       padding: EdgeInsets.only(bottom: kSize.height * 0.02),
       child: TextFormField(
+        keyboardType: widget.keyboardType,
         validator: widget.validator,
         obscureText: widget.obscureText ?? false,
         obscuringCharacter: "*",
