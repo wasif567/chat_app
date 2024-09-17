@@ -1,8 +1,6 @@
 import 'package:chat/app/router/router_constant.dart';
 import 'package:chat/src/application/auth/auth_bloc.dart';
 import 'package:chat/src/application/country_bloc/country_bloc.dart';
-import 'package:chat/src/application/user/user_bloc.dart';
-import 'package:chat/src/application/user/user_event.dart';
 import 'package:chat/src/presentation/core/widgets/country_dropdown.dart';
 import 'package:chat/src/presentation/core/widgets/custom_textfield.dart';
 import 'package:chat/src/presentation/core/widgets/primary_button.dart';
@@ -65,7 +63,6 @@ class _RegisterPageState extends State<RegisterPage> {
           if (state.isRegistered != null) {
             if (state.isRegistered!) {
               Navigator.pushReplacementNamed(context, RouterConstant.homeRoute);
-              context.read<UserBloc>().add(FetchUsers());
             }
           }
         },

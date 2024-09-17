@@ -1,7 +1,5 @@
 import 'package:chat/app/router/router_constant.dart';
 import 'package:chat/src/application/auth/auth_bloc.dart';
-import 'package:chat/src/application/user/user_bloc.dart';
-import 'package:chat/src/application/user/user_event.dart';
 import 'package:chat/src/presentation/core/widgets/custom_textfield.dart';
 import 'package:chat/src/presentation/core/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +51,6 @@ class _LoginPageState extends State<LoginPage> {
           }
           if (state.loggedIn!) {
             Navigator.pushReplacementNamed(context, RouterConstant.homeRoute);
-            context.read<UserBloc>().add(FetchUsers());
           }
 
           if (state.code == "invalid-credential") {
@@ -113,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                                 if (value == null || value.isEmpty) {
                                   return 'Please enter your password';
                                 }
-                                if (value.length < 7) {
+                                if (value.length < 6) {
                                   return "Password required minimum 6 letters or digit";
                                 }
                                 return null;

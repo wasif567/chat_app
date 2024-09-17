@@ -7,7 +7,6 @@ class UserRepository {
   Future<List<RegisterUserModel>> fetchUsers() async {
     try {
       QuerySnapshot querySnapshot = await _firestore.collection('users').get();
-
       return querySnapshot.docs.map((doc) => RegisterUserModel.fromFirestore(doc)).toList();
     } catch (e) {
       throw Exception('Failed to fetch users: $e');

@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterUserModel {
+  String? id;
   String? email;
   String? password;
   String? mobileNumber;
@@ -10,6 +12,7 @@ class RegisterUserModel {
   String? fullName;
 
   RegisterUserModel({
+    this.id,
     this.email,
     this.password,
     this.mobileNumber,
@@ -27,12 +30,12 @@ class RegisterUserModel {
 
   factory RegisterUserModel.fromFirestore(DocumentSnapshot doc) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-
     return RegisterUserModel(
+      id: data["uui"],
       email: data["email"],
       mobileNumber: data["mobileNumber"],
       country: data["country"],
-      fullName: data["fullName"],
+      fullName: data["displayName"],
     );
   }
 

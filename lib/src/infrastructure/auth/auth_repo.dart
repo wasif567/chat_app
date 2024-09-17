@@ -31,6 +31,7 @@ class AuthRepo {
       // Save additional data to Firestore
       await FirebaseFirestore.instance.collection('users').doc(userCredential.user!.uid).set({
         'email': userCredential.user!.email,
+        'id': userCredential.user!.uid,
         'displayName': registerUser.fullName!.trim(),
         'country': registerUser.country!.trim(),
         'mobile': registerUser.mobileNumber!.trim(),
@@ -63,5 +64,12 @@ class AuthRepo {
     } catch (_) {
       return false;
     }
+  }
+
+  Future getCurrentUser() async {
+    try {
+      final user = _auth.currentUser;
+      return user;
+    } catch (_) {}
   }
 }
